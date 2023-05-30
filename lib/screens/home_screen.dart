@@ -3,7 +3,7 @@ import 'package:weather_app/services/api.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.location});
-  final String location;
+  final String? location;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    api.getWeather(widget.location).then((value) {
+    api.getWeather(widget.location!).then((value) {
       setState(() {
         weather = value;
       });

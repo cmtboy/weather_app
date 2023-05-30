@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:weather_app/constant/colors.dart';
 import 'package:weather_app/screens/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -37,8 +38,8 @@ class _SplashScreenState extends State<SplashScreen> {
     determinePosition().then((value) => Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (context) => const HomePage(
-                    location: 'London',
+              builder: (context) => HomePage(
+                    location: '${value.latitude},${value.longitude}',
                   )),
         ));
     super.initState();
@@ -46,10 +47,22 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('LOading...'),
-      ),
+    return Scaffold(
+      backgroundColor: ThemeColor.scaffoldBackgroundColor,
+      body: SafeArea(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset('assets/images/splash.png'),
+          const SizedBox(
+            height: 16,
+          ),
+          const CircularProgressIndicator(
+            color: ThemeColor.darkTextColor,
+          )
+        ],
+      )),
     );
   }
 }

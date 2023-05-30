@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/constant/colors.dart';
 import 'package:weather_app/services/api.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,20 +29,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Weather App'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(weather?.city ?? ''),
-            Text(weather?.country ?? ''),
-            Text(weather?.temperature.toStringAsFixed(1) ?? ''),
-            Text(weather?.humidity.toStringAsFixed(1) ?? ''),
-            Text(weather?.windSpeed.toStringAsFixed(1) ?? ''),
-            Text(weather?.weatherDescription ?? ''),
-          ],
+      backgroundColor: ThemeColor.scaffoldBackgroundColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(weather?.weatherIcon ?? ''),
+              Text(weather?.city ?? ''),
+              Text(weather?.country ?? ''),
+              Text(weather?.temperature.toStringAsFixed(1) ?? ''),
+              Text(weather?.humidity.toStringAsFixed(1) ?? ''),
+              Text(weather?.windSpeed.toStringAsFixed(1) ?? ''),
+              Text(weather?.weatherDescription ?? ''),
+            ],
+          ),
         ),
       ),
     );

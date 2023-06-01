@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/constant/colors.dart';
 import 'package:weather_app/services/api.dart';
+import 'package:weather_app/widgets/current_weather.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.location});
@@ -35,13 +36,19 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(weather?.weatherIcon ?? ''),
-              Text(weather?.city ?? ''),
-              Text(weather?.country ?? ''),
-              Text(weather?.temperature.toStringAsFixed(1) ?? ''),
-              Text(weather?.humidity.toStringAsFixed(1) ?? ''),
-              Text(weather?.windSpeed.toStringAsFixed(1) ?? ''),
-              Text(weather?.weatherDescription ?? ''),
+              CurrentWeather(
+                  image: weather?.weatherIcon ?? '',
+                  weatherCondition: weather?.weatherDescription ?? '_ _',
+                  cityName: weather?.city ?? '_ _',
+                  temperature:
+                      weather?.temperature.toStringAsFixed(1) ?? '_ _'),
+              // Text(weather?.weatherIcon ?? '_ _'),
+              // Text(weather?.city ?? '_ _'),
+              // Text(weather?.country ?? '_ _'),
+              // Text(weather?.temperature.toStringAsFixed(1) ?? '_ _'),
+              // Text(weather?.humidity.toStringAsFixed(1) ?? '_ _'),
+              // Text(weather?.windSpeed.toStringAsFixed(1) ?? '_ _'),
+              // Text(weather?.weatherDescription ?? '_ _'),
             ],
           ),
         ),

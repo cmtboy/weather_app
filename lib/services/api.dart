@@ -9,14 +9,14 @@ class Api {
 
   Future<Weather> getWeather(String city) async {
     final url = Uri.parse(
-        'http://api.weatherapi.com/v1/current.json?key=$apiKey&q=$city&aqi=no');
+        'http://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$city&days=7&aqi=no&alerts=no');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
       final body = jsonDecode(response.body);
       return Weather.fromJson(body);
     } else {
-      throw Exception('df');
+      throw Exception('Error while fatching data from api');
     }
   }
 }

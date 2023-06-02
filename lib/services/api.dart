@@ -29,6 +29,7 @@ class Weather {
   final double windSpeed;
   final String weatherDescription;
   final String weatherIcon;
+  final List<dynamic> forcast;
 
   Weather.fromJson(Map<String, dynamic> json)
       : city = json['location']['name'],
@@ -37,5 +38,6 @@ class Weather {
         humidity = json['current']['humidity'],
         windSpeed = json['current']['wind_kph'],
         weatherDescription = json['current']['condition']['text'],
-        weatherIcon = json['current']['condition']['icon'];
+        weatherIcon = json['current']['condition']['icon'],
+        forcast = json['forecast']['forecastday'];
 }

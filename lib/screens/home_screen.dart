@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/constant/colors.dart';
 import 'package:weather_app/services/api.dart';
 import 'package:weather_app/widgets/current_weather.dart';
+import 'package:weather_app/widgets/today_forcast.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.location});
+  const HomePage({
+    super.key,
+    required this.location,
+  });
   final String? location;
 
   @override
@@ -29,6 +33,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print(weather?.forcast ?? '---');
     return Scaffold(
       backgroundColor: ThemeColor.scaffoldBackgroundColor,
       body: SafeArea(
@@ -42,6 +47,8 @@ class _HomePageState extends State<HomePage> {
                   cityName: weather?.city ?? '_ _',
                   temperature:
                       weather?.temperature.toStringAsFixed(1) ?? '_ _'),
+
+              TodayForcast(forcast: weather?.forcast ?? [])
               // Text(weather?.weatherIcon ?? '_ _'),
               // Text(weather?.city ?? '_ _'),
               // Text(weather?.country ?? '_ _'),

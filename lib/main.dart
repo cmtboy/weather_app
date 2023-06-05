@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       title: 'Weather App',
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

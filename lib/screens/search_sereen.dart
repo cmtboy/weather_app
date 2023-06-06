@@ -6,19 +6,18 @@ import 'package:weather_app/widgets/current_weather.dart';
 import 'package:weather_app/widgets/seven_day_forcast.dart';
 import 'package:weather_app/widgets/today_forcast.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({
+class SearchPage extends StatefulWidget {
+  const SearchPage({
     super.key,
     required this.location,
   });
-  final String? location;
+  final String location;
 
   @override
-  // ignore: library_private_types_in_public_api
-  _HomePageState createState() => _HomePageState();
+  SearchPageState createState() => SearchPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class SearchPageState extends State<SearchPage> {
   Api api = Api(apiKey: '4eccdd27dfb8461c93f151206232305');
   late Weather weather;
 //
@@ -27,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    api.getWeather(widget.location!).then((value) {
+    api.getWeather(widget.location).then((value) {
       setState(() {
         weather = value;
         isLoading = false;
@@ -38,6 +37,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.location),
+        centerTitle: true,
+      ),
       backgroundColor: ThemeColor.scaffoldBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(

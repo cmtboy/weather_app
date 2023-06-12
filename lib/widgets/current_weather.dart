@@ -128,10 +128,15 @@ class CurrentWeatherState extends State<CurrentWeather> {
                   IconButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  SearchPage(location: textController.text)));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              SearchPage(location: textController.text),
+                        ),
+                      );
+                      setState(() {
+                        showSearch = false;
+                      });
                     },
                     icon: const Icon(Icons.send),
                   ),
